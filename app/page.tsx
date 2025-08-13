@@ -49,12 +49,30 @@ export default function Home() {
     "Tech Enthusiast",
   ]
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Form submitted:", formData)
-    // Reset form
-    setFormData({ name: "", email: "", message: "" })
-    alert("Thank you for your message! I'll get back to you soon.")
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        // Reset form
+        setFormData({ name: "", email: "", message: "" })
+        alert("Thank you for your message! I'll get back to you soon.")
+      } else {
+        alert("Sorry, there was an error sending your message. Please try again.")
+      }
+    } catch (error) {
+      console.error("Form submission error:", error)
+      alert("Sorry, there was an error sending your message. Please try again.")
+    }
   }
 
   const handleResumeDownload = () => {

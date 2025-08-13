@@ -98,7 +98,11 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t">
+          <div className="md:hidden py-4 border-t"><div
+            className={`md:hidden py-4 border-t ${
+              isScrolled ? "bg-background/95 backdrop-blur-md" : "bg-background/95 backdrop-blur-md"
+            }`}
+          >
             <div className="flex flex-col space-y-4">
               {navigation.map((item) => (
                 <Link
