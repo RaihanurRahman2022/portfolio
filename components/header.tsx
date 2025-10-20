@@ -98,7 +98,7 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t"><div
+          <div
             className={`md:hidden py-4 border-t ${
               isScrolled ? "bg-background/95 backdrop-blur-md" : "bg-background/95 backdrop-blur-md"
             }`}

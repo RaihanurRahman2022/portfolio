@@ -119,12 +119,20 @@ export default function Home() {
       ],
     },
   ]
-
+  
   const personalProjects = [
+    {
+      title: "PersonalVault File Server",
+      description: "A complete file management system that turns your PC into a personal cloud server with REST API, authentication, and concurrent file processing.",
+      tech: "Go, Gin Framework, GORM, JWT, REST API, Concurrent Processing",
+      keyLearning: "Go concurrency (goroutines), JWT authentication, GORM database operations, middleware patterns, file system security, Windows API integration",
+      useCase: "Personal file server for accessing files from anywhere with secure authentication and efficient concurrent uploads",
+      githubUrl: "https://github.com/RaihanurRahman2022/PersonalVault",
+    },
     {
       title: "Task Manager CLI",
       description:
-        "A feature-rich command-line task manager to add, list, and remove tasks with persistent JSON storage.",
+      "A feature-rich command-line task manager to add, list, and remove tasks with persistent JSON storage.",
       tech: "Go, JSON, File I/O, CLI interaction",
       keyLearning: "Structs, JSON serialization, modular CLI design, handling user input",
       useCase: "Quickly manage tasks from the terminal without needing a UI",
