@@ -10,11 +10,11 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { Menu, X, Download } from "lucide-react"
 
 const navigation = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Skills", href: "#skills" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Projects", href: "/projects" },
+  { name: "Skills", href: "/skills" },
+  { name: "Contact", href: "/contact" },
 ]
 
 export function Header() {
@@ -29,21 +29,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault()
-    const targetId = href.replace("#", "")
-    const targetElement = document.getElementById(targetId)
-
-    if (targetElement) {
-      const headerHeight = 80
-      const targetPosition = targetElement.offsetTop - headerHeight
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
-      })
-    }
-
+  const handleNavClick = () => {
     setIsMenuOpen(false)
   }
 
@@ -64,7 +50,7 @@ export function Header() {
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <Link href="#home" className="flex items-center space-x-3" onClick={(e) => handleNavClick(e, "#home")}>
+          <Link href="/" className="flex items-center space-x-3" onClick={handleNavClick}>
             <Image src="/profile-no-bg.png" alt="MD Raihanur Rahman" width={40} height={40} className="object-cover" />
           </Link>
 
@@ -75,7 +61,7 @@ export function Header() {
                 key={item.name}
                 href={item.href}
                 className="text-muted-foreground hover:text-foreground transition-colors"
-                onClick={(e) => handleNavClick(e, item.href)}
+                onClick={handleNavClick}
               >
                 {item.name}
               </Link>
@@ -109,7 +95,7 @@ export function Header() {
                   key={item.name}
                   href={item.href}
                   className="text-muted-foreground hover:text-foreground transition-colors"
-                  onClick={(e) => handleNavClick(e, item.href)}
+                  onClick={handleNavClick}
                 >
                   {item.name}
                 </Link>
