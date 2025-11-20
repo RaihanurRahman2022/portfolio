@@ -15,6 +15,9 @@ import {
   Github,
   Linkedin,
 } from "lucide-react"
+import { ToastContainer } from "@/components/toast"
+import type { Toast } from "@/components/toast"
+
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -23,6 +26,17 @@ export default function Contact() {
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [toasts, setToasts] = useState<Toast[]>([])
+
+  const showToast = (type: Toast["type"], title: string, message: string) => {
+    const id = Math.random().toString(36).substring(2, 9)
+    const newToast: Toast = { id, type, title, message }
+    setToasts((prev) => [...prev, newToast])
+  }
+
+  const dismissToast = (id: string) => {
+    setToasts((prev) => prev.filter((toast) => toast.id !== id))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -42,22 +56,38 @@ export default function Contact() {
       if (result.success) {
         // Reset form
         setFormData({ name: "", email: "", message: "" })
-        alert("Thank you for your message! I'll get back to you soon.")
+        showToast(
+          "success",
+          "Message Sent! 🎉",
+          "Thank you for reaching out! I'll get back to you soon."
+        )
       } else {
-        alert(result.error || "Sorry, there was an error sending your message. Please try again.")
+        showToast(
+          "error",
+          "Oops! Something went wrong",
+          result.error || "Sorry, there was an error sending your message. Please try again."
+        )
       }
     } catch (error) {
       console.error("Form submission error:", error)
-      alert("Sorry, there was an error sending your message. Please try again.")
+      showToast(
+        "error",
+        "Connection Error",
+        "Sorry, there was an error sending your message. Please try again."
+      )
     } finally {
       setIsSubmitting(false)
     }
   }
 
+
+
   return (
     <div className="min-h-screen">
+      <ToastContainer toasts={toasts} onDismiss={dismissToast} />
       {/* Contact Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/50">
+
+      <section className="pt-28 pb-16 px-4 sm:px-6 lg:px-8 bg-muted/50">
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Get In Touch</h2>

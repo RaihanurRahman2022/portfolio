@@ -147,3 +147,30 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+/* Toast animations */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes progress {
+  0% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s infinite;
+}
+
+.animate-progress {
+  animation: progress 5s linear forwards;
+}

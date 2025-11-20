@@ -6,6 +6,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BackToTop } from "@/components/back-to-top"
+import { AnimatedBackground } from "@/components/animated-background"
+import { ScrollProgress } from "@/components/scroll-progress"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -53,8 +55,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} min-h-screen bg-background font-sans antialiased`}>
+      <body className={`${inter.variable} min-h-screen bg-background font-sans antialiased`} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
+          <ScrollProgress />
+          <AnimatedBackground />
           <Header />
           {children}
           <Footer />

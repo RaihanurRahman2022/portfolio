@@ -2,6 +2,7 @@
 
 import type React from "react"
 
+import { motion } from "framer-motion"
 import { ProjectCard } from "@/components/project-card"
 import { PersonalProjectCard } from "@/components/personal-project-card"
 
@@ -41,7 +42,7 @@ export default function Projects() {
       ],
     },
   ]
-  
+
   const personalProjects = [
     {
       title: "PersonalVault File Server",
@@ -54,7 +55,7 @@ export default function Projects() {
     {
       title: "Task Manager CLI",
       description:
-      "A feature-rich command-line task manager to add, list, and remove tasks with persistent JSON storage.",
+        "A feature-rich command-line task manager to add, list, and remove tasks with persistent JSON storage.",
       tech: "Go, JSON, File I/O, CLI interaction",
       keyLearning: "Structs, JSON serialization, modular CLI design, handling user input",
       useCase: "Quickly manage tasks from the terminal without needing a UI",
@@ -94,41 +95,84 @@ export default function Projects() {
     },
   ]
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  }
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  }
+
   return (
     <div className="min-h-screen">
       {/* Office Projects Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="pt-28 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
-          <div className="text-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Office Projects</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Major enterprise projects I've worked on at SELISE Digital Platforms, showcasing scalable solutions
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {officeProjects.map((project, index) => (
-              <ProjectCard key={index} {...project} />
+              <motion.div key={index} variants={item}>
+                <ProjectCard {...project} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Personal Projects Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/50">
         <div className="container mx-auto">
-          <div className="text-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Personal Projects</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Side projects built with Go, showcasing my passion for clean code and efficient solutions
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {personalProjects.map((project, index) => (
-              <PersonalProjectCard key={index} {...project} />
+              <motion.div key={index} variants={item}>
+                <PersonalProjectCard {...project} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
