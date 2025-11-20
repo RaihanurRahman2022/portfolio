@@ -22,9 +22,12 @@ export default function Contact() {
     email: "",
     message: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setIsSubmitting(true)
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -41,11 +44,13 @@ export default function Contact() {
         setFormData({ name: "", email: "", message: "" })
         alert("Thank you for your message! I'll get back to you soon.")
       } else {
-        alert("Sorry, there was an error sending your message. Please try again.")
+        alert(result.error || "Sorry, there was an error sending your message. Please try again.")
       }
     } catch (error) {
       console.error("Form submission error:", error)
       alert("Sorry, there was an error sending your message. Please try again.")
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -149,8 +154,8 @@ export default function Contact() {
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     required
                   />
-                  <Button type="submit" className="w-full">
-                    Send Message
+                  <Button type="submit" className="w-full" disabled={isSubmitting}>
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </CardContent>

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://raihanur-rahman.netlify.app/sitemap.xml
+
+# Block specific paths if needed
+# Disallow: /api/

@@ -1,0 +1,15 @@
+# Dependencies
+node_modules
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Build outputs
+.next
+out
+build
+dist
+
+# Misc
+*.tsbuildinfo
+.DS_Store
