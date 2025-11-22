@@ -6,6 +6,8 @@ import { motion } from "framer-motion"
 import { ProjectCard } from "@/components/project-card"
 import { PersonalProjectCard } from "@/components/personal-project-card"
 
+import { ArchitectureDiagram } from "@/components/architecture-diagram"
+
 export default function Projects() {
   const officeProjects = [
     {
@@ -51,6 +53,7 @@ export default function Projects() {
       keyLearning: "Go concurrency (goroutines), JWT authentication, GORM database operations, middleware patterns, file system security, Windows API integration",
       useCase: "Personal file server for accessing files from anywhere with secure authentication and efficient concurrent uploads",
       githubUrl: "https://github.com/RaihanurRahman2022/PersonalVault",
+      architecture: <ArchitectureDiagram />,
     },
     {
       title: "Task Manager CLI",
