@@ -55,23 +55,23 @@ export function ArchitectureDiagram() {
     return (
         <div className="w-full">
             {/* Flow Diagram */}
-            <div className="relative w-full overflow-x-auto overflow-y-visible mb-8 scrollbar-thin pb-2">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-row items-center justify-start lg:justify-center gap-4 lg:gap-6 xl:gap-8 2xl:gap-10 px-2 sm:px-4 lg:min-w-fit mx-auto">
+            <div className="relative w-full overflow-x-auto overflow-y-visible mb-8 scrollbar-thin pb-2 -mx-2 sm:-mx-4 lg:mx-0">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-row items-center justify-start lg:justify-center gap-4 lg:gap-6 xl:gap-8 2xl:gap-10 px-2 sm:px-4 lg:px-0 lg:w-full lg:max-w-full">
                 {nodes.map((node, index) => (
-                    <div key={node.id} className="relative flex flex-col items-center w-full sm:w-auto">
+                    <div key={node.id} className="relative flex flex-col items-center w-full sm:w-auto flex-shrink-0">
                         {/* Node */}
                         <motion.div
                             initial={{ scale: 0, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             transition={{ delay: index * 0.15, type: "spring", stiffness: 200 }}
-                            className={`relative z-10 w-full sm:w-auto sm:min-w-[200px] lg:min-w-[240px] xl:min-w-[260px] min-h-[140px] lg:min-h-[180px] xl:min-h-[200px] rounded-xl border backdrop-blur-md flex flex-col items-center justify-center p-6 lg:p-8 xl:p-10 gap-4 transition-all duration-300 hover:scale-105 hover:shadow-xl ${node.bg} ${node.border} group`}
+                            className={`relative z-10 w-full sm:w-auto sm:min-w-[200px] lg:min-w-[220px] xl:min-w-[240px] 2xl:min-w-[260px] min-h-[140px] lg:min-h-[160px] xl:min-h-[180px] 2xl:min-h-[200px] rounded-xl border backdrop-blur-md flex flex-col items-center justify-center p-5 sm:p-6 lg:p-7 xl:p-8 2xl:p-10 gap-3 sm:gap-4 transition-all duration-300 hover:scale-105 hover:shadow-xl ${node.bg} ${node.border} group`}
                         >
-                            <div className={`p-4 lg:p-5 xl:p-6 rounded-full bg-background/80 ${node.color}`}>
-                                <node.icon className="w-8 h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12" />
+                            <div className={`p-3 sm:p-4 lg:p-4 xl:p-5 2xl:p-6 rounded-full bg-background/80 ${node.color} flex-shrink-0`}>
+                                <node.icon className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 xl:w-10 xl:h-10 2xl:w-12 2xl:h-12" />
                             </div>
-                            <div className="flex flex-col items-center text-center">
-                                <span className="font-bold text-base lg:text-lg xl:text-xl mb-2">{node.label}</span>
-                                <span className="text-xs lg:text-sm xl:text-base text-muted-foreground leading-relaxed px-2">{node.description}</span>
+                            <div className="flex flex-col items-center text-center w-full">
+                                <span className="font-bold text-sm sm:text-base lg:text-lg xl:text-xl 2xl:text-xl mb-1 sm:mb-2">{node.label}</span>
+                                <span className="text-[10px] sm:text-xs lg:text-sm xl:text-base text-muted-foreground leading-relaxed px-1 sm:px-2">{node.description}</span>
                             </div>
 
                             {/* Pulse Effect */}
@@ -84,9 +84,9 @@ export function ArchitectureDiagram() {
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.15 + 0.1 }}
-                                className="hidden lg:flex absolute -right-5 xl:-right-6 top-1/2 -translate-y-1/2 text-primary/70 z-20 items-center justify-center"
+                                className="hidden lg:flex absolute -right-4 xl:-right-5 2xl:-right-6 top-1/2 -translate-y-1/2 text-primary/70 z-20 items-center justify-center"
                             >
-                                <ArrowRight className="w-7 h-7 xl:w-8 xl:h-8 animate-pulse" />
+                                <ArrowRight className="w-6 h-6 lg:w-6 lg:h-6 xl:w-7 xl:h-7 2xl:w-8 2xl:h-8 animate-pulse" />
                             </motion.div>
                         )}
 

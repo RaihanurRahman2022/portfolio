@@ -33,7 +33,7 @@ export function PersonalProjectCard({
             {architecture && (
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button size="sm" variant="secondary" className="flex items-center justify-center gap-1.5 sm:gap-2 min-w-[60px] sm:min-w-[70px] lg:min-w-[75px] px-2 sm:px-3">
+                  <Button size="sm" variant="outline" className="cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 min-w-[60px] sm:min-w-[70px] lg:min-w-[75px] px-2 sm:px-3">
                     <Network className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-4 lg:h-4 flex-shrink-0" />
                     <span className="text-xs sm:text-sm whitespace-nowrap">Arch</span>
                   </Button>
